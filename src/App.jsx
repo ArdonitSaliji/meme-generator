@@ -1,10 +1,9 @@
 import React from 'react'
-import Navbar from './component/Navbar'
-
+import Header from './component/Header'
 function App() {
   return (
     <div className='container'>
-      <Navbar />
+      <Header />
     </div>
   )
 }
