@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
+import Draggable from 'react-draggable'
 const Meme = () => {
   const [meme, setMeme] = useState({
     topText: '',
@@ -31,16 +32,28 @@ const Meme = () => {
   return (
     <main>
       <div className='form'>
-        <input onChange={handleChange} value={meme.topText} name='topText' className='form-input' type='text' placeholder='Text' />
-        <input onChange={handleChange} value={meme.bottomText} name='bottomText' className='form-input' type='text' placeholder='Text' />
-        <button onClick={getMemeImage} className='form-button'>
+        <input onChange={handleChange} value={meme.topText} name='topText' className='form-input' type='text' placeholder='Top text' />
+        <input onChange={handleChange} value={meme.bottomText} name='bottomText' className='form-input' type='text' placeholder='Bottom text' />
+      </div>
+      <div className='form__button-div'>
+        <button className='form-button' onClick={getMemeImage}>
           Get a new meme image 🖼️
         </button>
       </div>
+
+      <div className='form__add-div'>
+        <input className='form__add-input' type='text' placeholder='Add more meme text' />
+        <button className='form__add-button'>Add more text</button>
+      </div>
+
       <div className='meme'>
         <img src={meme.randomImage} className='meme-image' alt='img' />
-        <h2 className='meme-text top'>{meme.topText}</h2>
-        <h2 className='meme-text bottom'>{meme.bottomText}</h2>
+        <Draggable>
+          <h2 className='meme-text top'>{meme.topText}</h2>
+        </Draggable>
+        <Draggable>
+          <h2 className='meme-text bottom'>{meme.bottomText}</h2>
+        </Draggable>
       </div>
     </main>
   )
